@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te amo, Ingrid</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        #container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            opacity: 0; /* Inicialmente, a div está invisível */
+        }
+
+        h1 {
+            color: #e74c3c;
+            font-family: 'Montserrat';
+            font-weight: 600;
+        }
+
+        p {
+            color: #333;
+            font-size: 18px;
+            font-family: 'Montserrat';
+            font-weight: 500;
+        }
+
+        #options {
+            margin-top: 20px;
+        }
+
+        .option {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            font-family: 'Montserrat';
+            font-weight: 500;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .option:hover {
+            background-color: #2980b9;
+        }
+
+        #result {
+            margin-top: 20px;
+            display: none;
+        }
+
+        #heart {
+            color: #e74c3c;
+            font-size: 24px;
+            cursor: pointer;
+            animation: heartbeat 1s infinite; /* Animação de pulsação */
+        }
+
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        #specialMessage {
+            margin-top: 20px;
+            display: none;
+        }
+        #specialMessage img{
+            display: flex;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 600px) {
+            #container {
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container" class="animate__animated animate__fadeIn">
+        <h1>Confia em mim, meu amor!</h1>
+        <p>Querida Ingrid,</p>
+        <p>Sei que você não gosta muito de seguir regras, porém, eu quero que você clique primeiro no botão 1, depois no botão 2 e, em seguida, no botão 3. Por favor minha linda!</p>
+        <div id="options">
+            <button class="option" onclick="showMessage('opcao1')">Botão 1</button>
+            <button class="option" onclick="showMessage('opcao2')">Botão 2</button>
+            <button class="option" onclick="showSpecialMessage('opcao3')">Botão 3</button>
+        </div>
+        <p id="result"></p>
+        <div id="specialMessage">
+            <p>Em cada momento que passamos juntos, construímos memórias que são como estrelas no céu da nossa história de amor. Te amo mt mt mt!!!</p>
+            <img src="Captura de tela 2023-12-02 162937.png" alt="Imagem Especial">
+        </div>
+        <p id="heart" onclick="animateHeart()">❤️</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script>
+        function animateHeart() {
+            anime({
+                targets: '#heart',
+                scale: 1.5,
+                direction: 'alternate',
+                loop: 3,
+                easing: 'easeInOutQuad'
+            });
+        }
+
+        function showMessage(option) {
+            let resultElement = document.getElementById('result');
+            let specialMessageElement = document.getElementById('specialMessage');
+            let message = '';
+
+            switch (option) {
+                case 'opcao1':
+                    message = 'Seu amor ilumina cada canto escuro do meu coração, tornando meus dias mais radiantes!';
+                    break;
+                case 'opcao2':
+                    message = 'Cada batida do meu coração sussurra seu nome, e cada suspiro é um lembrete do quão profundamente estou apaixonado por você!';
+                    break;
+                case 'opcao3':
+                    message = 'Em cada momento que passamos juntos, construímos memórias que são como estrelas no céu da nossa história de amor. Te amo mt mt mt!!!';
+                    specialMessageElement.style.display = 'block';
+                    break;
+            }
+
+            resultElement.textContent = message;
+            resultElement.style.display = 'block';
+        }
+
+        function showSpecialMessage() {
+            let specialMessageElement = document.getElementById('specialMessage');
+            specialMessageElement.style.display = 'block';
+        }
+
+        // Mostra a div com fade-in
+        anime({
+            targets: '#container',
+            opacity: 1,
+            easing: 'easeInOutQuad',
+            duration: 2000
+        });
+    </script>
+</body>
+</html>
